@@ -10,7 +10,7 @@ Question: {question}
 Instructions:
 - Answer using only the information in the context above.
 - If the context does not contain enough information to answer, say "I don't have enough information in the document to answer that."
-- Be concise.
+- Provide a thorough, detailed answer using multiple sentences where relevant, rather than a single brief sentence.
 
 Answer:"""
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     from embed import embed_chunks
     from store import add_to_store, query_store
 
-    pages = extract_pages("documents/AN IMAGE IS WORTH 16X16 WORDS- TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE.pdf")
+    pages = extract_pages("documents/Masked Autoencoders Are Scalable Vision Learners.pdf")
     chunks = chunk_pages(pages, source="vit_paper")
     vectors = embed_chunks(chunks)
     add_to_store(chunks, vectors)
@@ -49,6 +49,6 @@ if __name__ == "__main__":
     retrieved = query_store(question, model)
 
 
-result = generate_answer(question, retrieved)
-print(f"Answer: {result['answer']}")
-print(f"Sources: pages {result['sources']}")
+    result = generate_answer(question, retrieved)
+    print(f"Answer: {result['answer']}")
+    print(f"Sources: pages {result['sources']}")

@@ -47,7 +47,7 @@ def chunk_pages(pages: list[Page], source: str, chunk_size: int = 800, overlap: 
 if __name__ == "__main__":
     from ingest import extract_pages
 
-    pages = extract_pages("documents/AN IMAGE IS WORTH 16X16 WORDS- TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE.pdf")
+    pages = extract_pages("documents/Masked Autoencoders Are Scalable Vision Learners.pdf")
     chunks = chunk_pages(pages, source="vit_paper")
     print(f"Created {len(chunks)} chunks from {len(pages)} pages")
     print(chunks[0].text[-150:])
