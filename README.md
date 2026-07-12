@@ -1,8 +1,6 @@
 # RAG Document Assistant
 
-Upload a PDF, ask it questions, get answers grounded in the actual document — with page citations, and a straight "I don't know" when the answer isn't in there.
-
-Built this to actually understand how RAG works under the hood, not just wire up a LangChain tutorial. Everything here — chunking, retrieval, prompt design, evaluation — was built and debugged from scratch.
+Upload a PDF, ask it questions, get answers grounded in the actual document, with page citations, and a straight "I don't know" when the answer isn't in there.
 
 ## What it does
 
@@ -39,7 +37,7 @@ docker run -p 8501:8501 -e OLLAMA_HOST=http://host.docker.internal:11434 rag-ass
 
 Open `http://localhost:8501`, upload a PDF, start asking questions.
 
-(No Docker? `pip install -r requirements.txt` and `streamlit run src/app.py` works too, as long as Ollama's running.)
+(No Docker? `pip install -r requirements.txt` and `streamlit run src/app.py` works too, as long as Ollama's running:)
 
 ## How it works
 
@@ -49,7 +47,7 @@ PDF → chunked into overlapping pieces → embedded → stored in Chroma → on
 
 Ran an 8-question eval against a real paper, checking whether retrieval actually pulled the right page for each answer: **85.7% retrieval accuracy**.
 
-The more interesting result: one question got the *right* answer, but the retrieved chunks didn't obviously support it — turned out the model likely remembered that number from its own training data rather than pulling it from context. Worth knowing local models don't always stick to "only use the provided context," even when you tell them to. Full breakdown in `LEARNING_NOTES.md`.
+The more interesting result: one question got the *right* answer, but the retrieved chunks didn't obviously support it; turned out the model likely remembered that number from its own training data rather than pulling it from context. Worth knowing local models don't always stick to "only use the provided context," even when you tell them to. Full breakdown in `LEARNING_NOTES.md`.
 
 ## Known limitations
 
@@ -59,4 +57,4 @@ The more interesting result: one question got the *right* answer, but the retrie
 
 ## Worth reading
 
-`LEARNING_NOTES.md` has the actual build log — every bug, every wrong assumption, every fix, written down as I went. More honest picture of the project than this README.
+`LEARNING_NOTES.md` has the actual build log --- every bug, every wrong assumption, every fix, written down as I went. More honest picture of the project than this README.
