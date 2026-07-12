@@ -1,4 +1,12 @@
+
 import ollama
+import os
+
+# Use host.docker.internal when running in Docker, localhost otherwise.
+# This lets the same code work both on your machine directly and inside
+# a container without needing two separate versions.
+OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
+client = ollama.Client(host=OLLAMA_HOST)
 
 PROMPT_TEMPLATE = """You are a helpful assistant answering questions based only on the provided context.
 
