@@ -2,7 +2,7 @@
 
 A running log of engineering lessons from building this project, not just a
 build log. The goal is to remember *why*, not just *what*.
-
+This was generated using Claude**
 ---
 
 ## Lesson 1 — Errors propagate silently through a pipeline
